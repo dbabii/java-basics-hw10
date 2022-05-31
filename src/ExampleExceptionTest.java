@@ -41,7 +41,7 @@ public class ExampleExceptionTest {
   }
 
   @Test(dataProvider = "negativeData", expectedExceptions = IllegalArgumentException.class,
-          expectedExceptionsMessageRegExp = "input value is below zero!")
+          expectedExceptionsMessageRegExp = "Input value is below zero!")
   public void testRectangleAreaNegative(int a, int b) {
     ExampleException.rectangleArea(a,b);
   }
