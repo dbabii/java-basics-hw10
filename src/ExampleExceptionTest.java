@@ -1,8 +1,7 @@
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.fail;
-
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 public class ExampleExceptionTest {
 
@@ -31,19 +30,20 @@ public class ExampleExceptionTest {
     return new Object[][]{
         {-2, 2},
         {-3, -2},
-        {21, -2},
+        {21, -1},
         {2, -1}
     };
   }
 
   @Test(dataProvider = "data")
   public void testRectangleArea(int a, int b, int c) {
-    // TODO put your code here
+    assertEquals(ExampleException.rectangleArea(a, b), c);
   }
 
-
-  @Test(dataProvider = "negativeData")
+  @Test(dataProvider = "negativeData", expectedExceptions = IllegalArgumentException.class,
+          expectedExceptionsMessageRegExp = "input value is below zero!")
   public void testRectangleAreaNegative(int a, int b) {
-    // TODO put your code here
+    ExampleException.rectangleArea(a,b);
   }
+
 }
